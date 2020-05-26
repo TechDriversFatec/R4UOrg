@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_restful import Resource, Api
 from getGenders import getGenders
@@ -12,6 +13,7 @@ from sqlalchemy.orm import sessionmaker
 
 app = Flask(__name__)
 api = Api(app)
+port = int(os.environ.get("PORT", 5000))
 
 test = '{"gender1": "action", "gender2": "terror", "gender3": "comedy"}'
 
@@ -95,4 +97,4 @@ api.add_resource(setGenero, '/setGenero/<string:usuario>/<string:genero>')
 api.add_resource(setDadosIniciais, '/dadosIniciais')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)

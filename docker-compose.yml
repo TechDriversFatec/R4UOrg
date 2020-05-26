@@ -7,7 +7,7 @@ services:
     volumes:
       - ./app:/usr/src/app
     ports:
-      - 5001:80
+      - 5001:5000
     environment:
       POSTGRES_USER: fatec
       POSTGRES_PASSWORD: fatec
