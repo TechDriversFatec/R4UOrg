@@ -53,7 +53,6 @@ class setDadosIniciais(Resource):
             'Msg': 'Cadastrado com sucesso.'
         }
 
-
 class setGenero(Resource):
     def get(self,usuario, genero):
         db_string = "postgres://umecukbhukghpw:ab54f571331b41ff9fbf760434d3c944d342d90a8727dc4693a4960fdce036de@ec2-52-44-55-63.compute-1.amazonaws.com:5432/d9428qgpam0o6u"
@@ -90,7 +89,7 @@ class setGenero(Resource):
         return {
             'Msg': 'Genero '+genero+' cadastrado para o usuario '+usuario+'.'
         }
-        
+
 #    def get(self):
 #        genders = getGenders(test)
 #        return genders
