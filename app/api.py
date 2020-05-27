@@ -90,6 +90,12 @@ class setGenero(Resource):
             'Msg': 'Genero '+genero+' cadastrado para o usuario '+usuario+'.'
         }
 
+class getFilm(Resource):
+    def get(self):
+        return { 
+            "filme": 'Vingadores Ultimato' 
+        }
+
 #    def get(self):
 #        genders = getGenders(test)
 #        return genders
@@ -97,6 +103,7 @@ class setGenero(Resource):
 #api.add_resource(Test, '/')
 api.add_resource(setGenero, '/setGenero/<string:usuario>/<string:genero>')
 api.add_resource(setDadosIniciais, '/dadosIniciais')
+api.add_resource(getFilm, '/getFilm')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port, debug=True)
