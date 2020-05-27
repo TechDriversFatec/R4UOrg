@@ -90,6 +90,7 @@ class setGenero(Resource):
         return {
             'Msg': 'Genero '+genero+' cadastrado para o usuario '+usuario+'.'
         }
+        
 #    def get(self):
 #        genders = getGenders(test)
 #        return genders
