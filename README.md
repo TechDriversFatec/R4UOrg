@@ -2,14 +2,14 @@
 
 Projeto de inteligencia artificial, para interação com assistente virtual do primeiro semestre.
 
--[x] IA - lógica Fuzzy
--[x] Elaboração e distribuição da planilha para obtenção de dados - Dados para treinamento IA
--[x] Disponibilizar acesso da aplicação no Heroku
--[x] Rotas para acesso do assistente à aplicação
--[x] Banco e modelagem
+- [x] IA - lógica Fuzzy
+- [x] Elaboração e distribuição da planilha para obtenção de dados - Dados para treinamento IA
+- [x] Disponibilizar acesso da aplicação no Heroku
+- [x] Rotas para acesso do assistente à aplicação
+- [x] Banco e modelagem
 
 
-##Primeira entrega
+## Primeira entrega
 
 Mateus - preparacao de scripts sql para inserçao no banco, tanto ingles quanto em portugues
 
@@ -23,7 +23,7 @@ Everton - Criacao de tabelas, relacionamentos e modelagem
 
 Willian - Estudou bibliotecas imdb, primeira parte de busca dos dados da imdb
 
-##Terceira entrega
+## Terceira entrega
 
 - Rotas em que a aplicação irá disponibilizar os dados.
 - PoC da funcionalidade do IA com a interação dos dados analisados pelas bibliotecas *IMDB* e *RottenTomatoes*
