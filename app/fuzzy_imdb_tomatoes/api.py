@@ -6,7 +6,6 @@ from justwatch import justwatchapi, JustWatch
 from collections import Counter
 import requests
 
-
 ##### API Rapid imdb via Request --- metodo alternativo
 
 melhores_filmes = "https://imdb8.p.rapidapi.com/title/get-top-rated-movies"
@@ -30,13 +29,15 @@ busca_filme = requests.request("GET", busca, headers=headers, params=query)
 ########
 
 ia = IMDb()
-just_watch = JustWatch(country='BR')
+just_watch = JustWatch()
 
 cont = 0
 
 def buscaFilmeImdb (movie):
     filmes = ia.search_movie(movie)
     return filmes
+
+#print(buscaFilmeImdb('the conjuring'))
 
 def generoFilme (array):
     res = {'filme':[], 'generos':[]}
@@ -48,12 +49,50 @@ def generoFilme (array):
 
 def buscaFilmeAtor (x):
     personagem = ia.search_person(x)
+    aux = ia.get_person(personagem[0].personID, info=['main'])
+    print (aux.get('filmography')[3])
     return personagem
+
+#buscaFilmeAtor('xuxa')
+
+def buscaFilmePorID(x):
+    filme = ia.search_movie(x)
+    res = ia.get_movie(filme[0].movieID).infoset2keys 
+    x = ia.get_movie(filme[0].movieID, info=['main'])
+    #print (res)
+    #print( x.get('votes'))
+    return x.get('rating')
+
+#print (buscaFilmePorID('the conjuring'))
+
+def buscaFilmeElenco(x):
+    filme = ia.search_movie(x)
+    x = ia.get_movie(filme[0].movieID, info=['main'])
+    return x.get('cast')
+
+
+def buscaEssencialFilme(filme):
+    dic = {'elenco':[], 'genero':[],'popularidade':[],'escritor':[],'titulo':[],'ano':[],'tipo':[], 'votos':[]}
+    a = ia.search_movie(filme)
+    x = ia.get_movie(a[0].movieID, info=['main'])
+    dic['elenco'].append(x.get('cast'))
+    dic['genero'].append(x.get('genres'))
+    dic['popularidade'].append(x.get('rating'))
+    dic['escritor'].append(x.get('writer'))
+    dic['titulo'].append(x.get('title'))
+    dic['ano'].append(x.get('year'))
+    dic['votos'].append(x.get('votes'))
+    dic['tipo'].append(x.get('kind'))
+    return dic
+
+#buscaFilmePorID('avatar')
+
+#print (buscaFilmeAtor('Angelina'))
 
 def buscaTopFilmes ():
     filmes = ia.get_top250_movies()
     return filmes
-
+   
 def buscaFilmes():
     filmes = ia.get_bottom100_movies()
     return filmes
@@ -73,14 +112,14 @@ def generosDos10MelhoresFilmesImdb():
 
 #print (generosDos10MelhoresFilmesImdb())
 
-#print (buscaFilmes())
+#print (buscaFilmeImdb('avatar'))
 
 #print(generoFilme(buscaFilmeImdb('avatar')))
 
 #f = ia.search_movie('avatar')
 #print(f[1])
 
-genres = just_watch.get_genres()
+#genres = just_watch.get_genres()
 #print(genres)
 
 #showings_last_week = just_watch.get_upcoming_cinema(weeks_offset=6, nationwide_cinema_releases_only=False)
@@ -108,6 +147,24 @@ def buscaFilmeJW (filme):
     resultado = just_watch.search_for_item(query= filme)
     return resultado['items'][0]
 
+def buscaJWGenerosFilmes(array):
+    filmes = []
+    short_gen = []
+    for i in array:
+        for j in just_watch.get_genres():
+            if i == j['technical_name'] or i == j['translation'] or i == j['slug']:
+                short_gen.append(j['short_name'])
+    jw = JustWatch(genres= short_gen, country='US')
+    resultado = jw.search_for_item()
+    for i in resultado['items']:
+        if (i['object_type'] == 'movie'):
+            filmes.append(i['title'])
+    return resultado ['items']
+
+#genre_details = just_watch.get_genres()
+#print (genre_details)
+#genero = [['Action', 'Sci-Fi']]
+#print(buscaJWGenerosFilmes(genero))
 #print(popularidadeFilme('Tropa de Elite'))
 
 def buscaPorGeneroDosMelhoresFilmes ():
@@ -135,3 +192,4 @@ def buscaPorGeneroDosMelhoresFilmes ():
 #print (buscaFilmeAvaliacao('tropa de elite'))
 
 #print (just_watch.get_genres())
+ 
