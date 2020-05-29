@@ -25,7 +25,7 @@ Willian - Estudou bibliotecas imdb, primeira parte de busca dos dados da imdb
 
 ## Terceira entrega
 
-- Rotas em que a aplicação irá disponibilizar os dados.
+- Rota de exemplo para disponibilizar ao primeiro semestre.
 - PoC da funcionalidade do IA com a interação dos dados analisados pelas bibliotecas *IMDB* e *RottenTomatoes*
 - Pesquisa e aplicação da biblioteca *Scikit-Fuzzy* para desenvolvimento IA
 - Desenvolvimento e conexão com banco.
