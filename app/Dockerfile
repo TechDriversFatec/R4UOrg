@@ -1,3 +1,10 @@
-FROM python:3.6-onbuild
-COPY . /usr/src/app
-CMD ["python", "server.py"]
+FROM python:3
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD [ "python", "./server.py" ]
