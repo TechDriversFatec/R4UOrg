@@ -8,6 +8,7 @@ app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 port = int(os.environ.get("PORT", 5000))
+db = os.environ.get('DATABASE_URL')
 
 # Exemplo de modelo para o banco de dados.
 '''
@@ -26,7 +27,7 @@ class Developer(db.Model):
 # Rota principal para envio do filme.
 @app.route('/getFilme/<int:id>', methods=['GET'])
 def getFilme(id):
-    return jsonify({"filme": "Avengers: Endgame"})
+    return jsonify({"filme": db})
 
 # Exemplo de outras rotas que acessam o banco de dados.
 '''
