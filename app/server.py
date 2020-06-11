@@ -5,16 +5,13 @@ from flask_migrate import Migrate
 
 
 if (os.environ.get('ENV') != 'prod'):
-    os.environ['DATABASE_URL'] = 'postgres://fatec:fatec@postgres:5432/pi'
-    #os.environ['DATABASE_URL'] = 'postgres://umecukbhukghpw:ab54f571331b41ff9fbf760434d3c944d342d90a8727dc4693a4960fdce036de@ec2-52-44-55-63.compute-1.amazonaws.com:5432/d9428qgpam0o6u'
-    
+    os.environ['DATABASE_URL'] = 'postgres://fatec:fatec@postgres:5432/pi'  
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 port = int(os.environ.get("PORT", 5000))
-db = os.environ.get('DATABASE_URL')
 
 # Exemplo de modelo para o banco de dados.
 '''
@@ -33,7 +30,7 @@ class Developer(db.Model):
 # Rota principal para envio do filme.
 @app.route('/getFilme/<int:id>', methods=['GET'])
 def getFilme(id):
-    return jsonify({"filme": db})
+    return jsonify({"filme": "Avengers: Endgame"})
 
 # Exemplo de outras rotas que acessam o banco de dados.
 '''
