@@ -3,6 +3,12 @@ from flask import Flask, jsonify, abort, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
+
+if (os.environ.get('ENV') == 'prod'):
+    os.environ['DATABASE_URL'] = 'postgres://fatec:fatec@postgres:5432/pi'
+    #os.environ['DATABASE_URL'] = 'postgres://umecukbhukghpw:ab54f571331b41ff9fbf760434d3c944d342d90a8727dc4693a4960fdce036de@ec2-52-44-55-63.compute-1.amazonaws.com:5432/d9428qgpam0o6u'
+    
+
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
