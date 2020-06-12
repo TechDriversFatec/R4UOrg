@@ -8,7 +8,6 @@ Projeto de inteligencia artificial, para interação com assistente virtual do p
 - [x] Rotas para acesso do assistente à aplicação
 - [x] Banco e modelagem
 
-
 ## Primeira entrega
 
 Mateus - preparacao de scripts sql para inserçao no banco, tanto ingles quanto em portugues
@@ -26,6 +25,12 @@ Willian - Estudou bibliotecas imdb, primeira parte de busca dos dados da imdb
 ## Terceira entrega
 
 - Rota de exemplo para disponibilizar ao primeiro semestre.
-- PoC da funcionalidade do IA com a interação dos dados analisados pelas bibliotecas *IMDB* e *RottenTomatoes*
-- Pesquisa e aplicação da biblioteca *Scikit-Fuzzy* para desenvolvimento IA
+- PoC da funcionalidade do IA com a interação dos dados analisados pelas bibliotecas _IMDB_ e _RottenTomatoes_
+- Pesquisa e aplicação da biblioteca _Scikit-Fuzzy_ para desenvolvimento IA
 - Desenvolvimento e conexão com banco.
+
+## Quarta entrega
+
+- Rotas já fazendo a comunicação com o banco do Docker.
+- Filtro com base nos dados do banco, de forma que as recomendações da IA façam sentido.
+- Coleta de dados (planilha de filmes favoritos de todos os alunos envolvidos no PI).
