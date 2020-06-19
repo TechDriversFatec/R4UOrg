@@ -8,6 +8,25 @@ Projeto de inteligência artificial, para interação com a assistente virtual d
 - [x] Rotas para acesso do assistente à aplicação
 - [x] Banco e modelagem
 
+### Quick Start
+
+- Como fazer a instalação do projeto
+
+  - Ter o Python instalado na sua máquina
+  - Instalar um editor de texto da sua preferência (indicamos VSCode ou Pycharm)
+  - Instalar o Docker desktop na sua máquina (há versões para Windows, Linux e Mac)
+  - Fazer o clone do projeto em algum diretório da sua preferência
+  - Entrar na pasta raiz do projeto através do comando "cd Topicos_Avancados"
+  - Na pasta raiz executar o comando "docker-compose up"
+  - Acessar a rota http://locahost:5001/getFilme/(algum número de 1 a 9)
+  - Os números de 1 a 9 são os números de cada grupo que participa do projeto Integrador
+
+- Links úteis:
+  - Python: https://www.python.org/
+  - Docker: https://www.docker.com/
+  - VSCode: https://code.visualstudio.com/
+  - JetBrains: https://www.jetbrains.com/pt-br/pycharm/
+
 ### Primeira entrega
 
 - Levantamento de requisitos, planejamento das sprints e organização de tasks no trello.
@@ -36,22 +55,3 @@ Projeto de inteligência artificial, para interação com a assistente virtual d
 - Rotas já fazendo a comunicação com o banco do Docker.
 - Filtro com base nos dados do banco, de forma que as recomendações da IA façam sentido.
 - Coleta de dados (planilha de filmes favoritos de todos os alunos envolvidos no PI).
-
-### Quinta entrega
-
-- Como fazer a instalação do projeto
-
-  - Ter o Python instalado na sua máquina
-  - Instalar um editor de texto da sua preferência (indicamos VSCode ou Pycharm)
-  - Instalar o Docker desktop na sua máquina (há versões para Windows, Linux e Mac)
-  - Fazer o clone do projeto em algum diretório da sua preferência
-  - Entrar na pasta raiz do projeto através do comando "cd Topicos_Avancados"
-  - Na pasta raiz executar o comando "docker-compose up -d"
-  - Acessar a rota http://locahost:5001/getFilme/(algum número de 1 a 9)
-  - Os números de 1 a 9 são os números de cada grupo que participa do projeto Integrador
-
-- Links úteis:
-  - Python: https://www.python.org/
-  - Docker: https://www.docker.com/
-  - VSCode: https://code.visualstudio.com/
-  - JetBrains: https://www.jetbrains.com/pt-br/pycharm/
