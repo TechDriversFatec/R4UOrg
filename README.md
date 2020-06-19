@@ -18,8 +18,8 @@ Projeto de inteligência artificial, para interação com a assistente virtual d
   - Fazer o clone do projeto em algum diretório da sua preferência
   - Entrar na pasta raiz do projeto através do comando "cd Topicos_Avancados"
   - Na pasta raiz executar o comando "docker-compose up"
-  - Acessar a rota http://locahost:5001/getFilme/(algum número de 1 a 9)
-  - Os números de 1 a 9 são os números de cada grupo que participa do projeto Integrador
+  - Acessar a rota http://locahost:5001/getFilme/{algum número de 1 a 9}
+  - Os números de 1 a 9 são os números de cada grupo que participa do Projeto Integrador
 
 - Links úteis:
   - Python: https://www.python.org/
