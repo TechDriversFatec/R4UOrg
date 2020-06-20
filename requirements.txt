@@ -5,4 +5,3 @@ psycopg2==2.8.5
 IMDbPY==6.8
 scikit-fuzzy==0.4.2
 matplotlib==3.2.1
-schedule==0.6.0
