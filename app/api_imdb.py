@@ -35,29 +35,27 @@ def listaFilmeSugerido(filme):
             print(filme)
             if index == 10: break
             fil = buscaEssencialFilme(str(filme))
-            if fil != None and fil['tipo'][0] == 'movie' and str(filme_indicado['titulo'][0]) != str(fil['titulo'][0]) and fil['keywords'][0] != None: lista_filme.append(fil['titulo'][0])
-    filme = lista_filme
-    filme = str(filme).replace('[', '').replace(']', '').replace("'", '').replace('"', '').split(', ') 
-    counter_filmes = Counter(filme)
+            if  fil != None and fil['tipo'][0] == 'movie' and filme_indicado['titulo'][0] != fil['titulo'][0] and fil['keywords'][0] != None: lista_filme.append(fil['titulo'][0])
+    counter_filmes = Counter(lista_filme)
     counter_filmes = counter_filmes.most_common()
     list_filmes = []
     for filme in counter_filmes:
         if filme[1] >= 2:
             list_filmes.append(filme[0])
     if len(list_filmes) > 0:
-        dic_filme['filme'].append(list_filmes)
-        for item in dic_filme['filme'][0]:
+        dic_filme['filme'] = list_filmes
+        for item in dic_filme['filme']:
             var = buscaEssencialFilme(item)
             dic_filme['ano'].append(var['ano'][0])
             dic_filme['rating'].append(var['popularidade'][0])
     else:
-        for index, item in enumerate (lista_filme[0]):
+        for index, item in enumerate (lista_filme):
             var = buscaEssencialFilme(item)
             dic_filme['filme'].append(item)
             dic_filme['ano'].append(var['ano'][0])
             dic_filme['rating'].append(var['popularidade'][0])
-            if len(lista_filme) > 10 and index == 10 or len(lista_filme) == (index + 1): break
+            if index == (len(lista_filme) / 2): break
     return dic_filme
 
 
-#print(listaFilmeSugerido('invocação do mal'))
+#print(listaFilmeSugerido('Whiplash'))

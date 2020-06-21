@@ -47,16 +47,16 @@ recomendacao_simulacao = ctrl.ControlSystemSimulation(recomendacao_crtl)
 def filtroSugestao (filme):
     filmes_recomendacoes = {'filme':[], 'recomendacao':[]}
     lista_filmes = api_imdb.listaFilmeSugerido(filme)
-    for filme in range (len(lista_filmes['filme'][0])):
-        recomendacao_simulacao.input['rank'] = lista_filmes['rating'][filme]
-        recomendacao_simulacao.input['ano'] = lista_filmes['ano'][filme]
+    for index,filme in enumerate (lista_filmes['filme']):
+        recomendacao_simulacao.input['rank'] = lista_filmes['rating'][index]
+        recomendacao_simulacao.input['ano'] = lista_filmes['ano'][index]
         recomendacao_simulacao.compute()
         filmes_recomendacoes['recomendacao'].append(recomendacao_simulacao.output['recomendacao'])
-        filmes_recomendacoes['filme'].append(lista_filmes['filme'][0][filme])
+        filmes_recomendacoes['filme'].append(lista_filmes['filme'][index])
     filme_escolhido = filmes_recomendacoes['filme'].pop(filmes_recomendacoes['recomendacao'].index(max(filmes_recomendacoes['recomendacao'], key=float)))
     return filme_escolhido
 
-print('\n \nO filme com maior recomendação é : ', filtroSugestao('Bacurau'))
+print('\n \nO filme com maior recomendação é : ', filtroSugestao("Kimi no na wa."))
 
 def getFilmeByGrupo(id):
     filmesGrupo =  filmes.filmesGrupo();
