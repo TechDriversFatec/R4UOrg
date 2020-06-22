@@ -56,7 +56,7 @@ def filtroSugestao (filme):
     filme_escolhido = filmes_recomendacoes['filme'].pop(filmes_recomendacoes['recomendacao'].index(max(filmes_recomendacoes['recomendacao'], key=float)))
     return filme_escolhido
 
-print('\n \nO filme com maior recomendação é : ', filtroSugestao("Kimi no na wa."))
+#print('\n \nO filme com maior recomendação é : ', filtroSugestao("Kimi no na wa."))
 
 def getFilmeByGrupo(id):
     filmesGrupo =  filmes.filmesGrupo();
