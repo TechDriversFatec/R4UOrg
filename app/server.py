@@ -61,12 +61,10 @@ def getFilmeString(grupo):
     return jsonify({"Erro": "Envie um número de 1 a 9."})
 
 def getFilmeByGrupo(grupo):
-    nome = ia_fuzzy.getFilmeByGrupo(grupo)
     filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=grupo).all()))
-    if(not nome in filmesByGrupo):
-        filme = Filme(grupo, nome)
-        db.session.add(filme)
-        db.session.commit()
+    filme = Filme(grupo, ia_fuzzy.getFilmeByGrupo(grupo, filmesByGrupo))
+    db.session.add(filme)
+    db.session.commit()
     getFilmeByGrupo(grupo)
 
 if __name__ == '__main__':
