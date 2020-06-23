@@ -30,9 +30,9 @@ def listaFilmeSugerido(filme):
     filme_indicado = buscaEssencialFilme(filme)
     for index, key in enumerate(filme_indicado['keywords'][0]):
         if index == 5: break
-        print('\n',index,'-', key, '\n')
+        #print('\n',index,'-', key, '\n')
         for index, filme in enumerate(imdb.get_keyword(key)):
-            print(filme)
+            #print(filme)
             if index == 10: break
             fil = buscaEssencialFilme(str(filme))
             try:
