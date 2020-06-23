@@ -42,9 +42,9 @@ rule5 = ctrl.Rule(rank['pessimo'] & ano['atual'] | rank['pessimo'] & ano['classi
 recomendacao_crtl = ctrl.ControlSystem([rule1,rule2,rule3,rule4,rule5])
 recomendacao_simulacao = ctrl.ControlSystemSimulation(recomendacao_crtl)
 
-def filtroSugestao (filme, block_list):
+def filtroSugestao (filme):
     filmes_recomendacoes = {'filme':[], 'recomendacao':[]}
-    lista_filmes = api_imdb.listaFilmeSugerido(filme, block_list)
+    lista_filmes = api_imdb.listaFilmeSugerido(filme)
     for index,filme in enumerate (lista_filmes['filme']):
         recomendacao_simulacao.input['rank'] = lista_filmes['rating'][index]
         recomendacao_simulacao.input['ano'] = lista_filmes['ano'][index]
@@ -54,8 +54,7 @@ def filtroSugestao (filme, block_list):
     filme_escolhido = filmes_recomendacoes['filme'].pop(filmes_recomendacoes['recomendacao'].index(max(filmes_recomendacoes['recomendacao'], key=float)))
     return filme_escolhido
 
-array = []
-print('\n \nO filme com maior recomendação é : ', filtroSugestao("Star Wars: The Clone Wars",array))
+#print('\n \nO filme com maior recomendação é : ', filtroSugestao("Star Wars: The Clone Wars"))
 
 def getFilmeByGrupo(id):
     filmesGrupo =  filmes.filmesGrupo();
