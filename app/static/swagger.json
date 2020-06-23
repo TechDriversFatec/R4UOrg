@@ -1,0 +1,49 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "description": "descrição",
+        "version": "1.0.0",
+        "title": "Topicos Avançados"
+    },
+    "serves": [
+        {
+            "url": "/"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Book Request",
+            "description": "Example API for requesting and return book requests"
+        }
+    ],
+    "paths": {
+        "/request": {
+            "get": {
+                "tags": [
+                    "Book Request"
+                ],
+                "summary": "Retorna o filme recomendado",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/filme"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "filme": {
+                "type": "object",
+                "properties": {
+                    "filme": {
+                        "name": "string"
+                    }
+                }
+            }
+        }
+    }
+}
