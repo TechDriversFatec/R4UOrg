@@ -1,7 +1,6 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "description": "descrição",
         "version": "1.0.0",
         "title": "Topicos Avançados"
     },
@@ -12,21 +11,60 @@
     ],
     "tags": [
         {
-            "name": "Book Request",
-            "description": "Example API for requesting and return book requests"
+            "name": "Topicos Avançados",
+            "description": "API para recomendações de filmes"
         }
     ],
     "paths": {
-        "/request": {
+        "/getFilme/{id}": {
             "get": {
                 "tags": [
-                    "Book Request"
+                    "Recomendação de filmes"
                 ],
-                "summary": "Retorna o filme recomendado",
+                "summary": "Retorna o filme o mockado para exemplo do retorno da API",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Id do grupo",
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
+                            "$ref": "#/components/schemas/filme"
+                        }
+                    }
+                }
+            }
+        },
+        "/getFilmeIA/{id}": {
+            "get": {
+                "tags": [
+                    "Recomendação de filmes"
+                ],
+                "summary": "Retorna o filme o mockado para exemplo do retorno da aplicação",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Id do grupo",
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
                             "$ref": "#/components/schemas/filme"
                         }
                     }
@@ -37,10 +75,16 @@
     "components": {
         "schemas": {
             "filme": {
-                "type": "object",
                 "properties": {
                     "filme": {
-                        "name": "string"
+                        "type": "string"
+                    }
+                }
+            },
+            "id": {
+                "properties": {
+                    "id": {
+                        "type": "string"
                     }
                 }
             }
