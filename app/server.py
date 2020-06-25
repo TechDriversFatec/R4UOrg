@@ -66,10 +66,10 @@ def getFilmeByGrupo(grupo):
         filme = Filme(grupo, nome)
         db.session.add(filme)
         db.session.commit()
-    getFilmeByGrupo(grupo)
+    if(len(filmesByGrupo)<15): getFilmeByGrupo(grupo)
 
 if __name__ == '__main__':
     for grupo in range(1,10):
-        thread = Thread(target=getFilmeByGrupo, args=(str(grupo),))
+        thread = Thread(target=getFilmeByGrupo, args=(str(grupo), ))
         thread.start()
     app.run(debug=True, host='0.0.0.0', port=port)
