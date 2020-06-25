@@ -35,7 +35,9 @@ def listaFilmeSugerido(filme):
             print(filme)
             if index == 10: break
             fil = buscaEssencialFilme(str(filme))
-            if  fil != None and fil['tipo'][0] == 'movie' and filme_indicado['titulo'][0] != fil['titulo'][0] and fil['keywords'][0] != None: lista_filme.append(fil['titulo'][0])
+            try:
+                if  fil['popularidade'][0] != None and fil['ano'][0] != None and fil != None and fil['tipo'][0] == 'movie' and filme_indicado['titulo'][0] != fil['titulo'][0] and fil['keywords'][0] != None and fil['titulo'][0]: lista_filme.append(fil['titulo'][0])
+            except: pass
     counter_filmes = Counter(lista_filme)
     counter_filmes = counter_filmes.most_common()
     list_filmes = []
@@ -57,5 +59,4 @@ def listaFilmeSugerido(filme):
             if index == (len(lista_filme) / 2): break
     return dic_filme
 
-
-#print(listaFilmeSugerido('Whiplash'))
+#print(listaFilmeSugerido('The Simpsons'))

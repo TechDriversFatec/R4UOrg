@@ -16,8 +16,6 @@ import random
 #Se score_filme for alta e ano_do_filme for média/baixo a recomendação é média
 
 # variaveis ponto chave
-#rank_imdb = ctrl.Antecedent(np.arange(0,100,1),'rank_imdb')
-#rank_tomatoes = ctrl.Antecedent(np.arange(0,100,1),'rank_tomatoes')
 ano = ctrl.Antecedent(np.arange(1920,2020,1),'ano')
 rank = ctrl.Antecedent(np.arange(0,100,1),'rank')
 recomendacao = ctrl.Consequent(np.arange(0,100,1),'recomendacao')
@@ -56,7 +54,7 @@ def filtroSugestao (filme):
     filme_escolhido = filmes_recomendacoes['filme'].pop(filmes_recomendacoes['recomendacao'].index(max(filmes_recomendacoes['recomendacao'], key=float)))
     return filme_escolhido
 
-#print('\n \nO filme com maior recomendação é : ', filtroSugestao("Kimi no na wa."))
+#print('\n \nO filme com maior recomendação é : ', filtroSugestao("Star Wars: The Clone Wars"))
 
 def getFilmeByGrupo(id):
     filmesGrupo =  filmes.filmesGrupo();

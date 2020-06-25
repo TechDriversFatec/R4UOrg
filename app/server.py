@@ -16,7 +16,32 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 port = int(os.environ.get("PORT", 5000))
 
-filmes = { "1": [], "2": [], "3": [], "4": [], "5": [], "6": [], "7": [], "8": [], "9": [] }
+class Filme(db.Model):
+    id = db.Column(db.Integer, db.Sequence('seq'), primary_key=True)
+    grupo = db.Column(db.String(1))
+    nome = db.Column(db.String(200))
+
+    def __init__(self, grupo, nome):
+        self.grupo = grupo
+        self.nome = nome
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "grupo": self.grupo,
+            "nome": self.nome
+        }
+    
+    def getNome(self):
+        return self.nome
+
+@app.route('/getFilmes', methods=['GET'])
+def getFilmes():
+    return jsonify({'filmes': list(map(lambda filme: filme.serialize(), Filme.query.all()))})
+
+@app.route('/getFilmes/<int:grupo>', methods=['GET'])
+def getFilmesByGrupo(grupo):
+    return jsonify({'filmes': list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all()))})
 
 
 @app.route('/static/<path:path>')
@@ -36,22 +61,34 @@ swaggerui_blueprint = get_swaggerui_blueprint(
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
 # Rota mockada sem processamento da IA para envio do filme.
-@app.route('/getFilme/<string:id>', methods=['GET'])
-def getFilme(id):
+@app.route('/getFilme/<int:grupo>', methods=['GET'])
+def getFilme(grupo):
     return jsonify({"filme": "Avengers: Endgame"})
 
 # Rota com processamento da IA para envio do filme.
-@app.route('/getFilmeIA/<string:id>', methods=['GET'])
-def getFilmeIA(id):
-    return jsonify({"filme": filmes[id] and filmes[id] or ""})
-    return jsonify({"filme": filmes[id] and random.choice(filmes[id]) or ""})
+@app.route('/getFilmeIA/<int:grupo>', methods=['GET'])
+def getFilmeIA(grupo):
+    if(grupo>0 and grupo<10):
+        filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all()))
+        return jsonify({"filme": filmesByGrupo and random.choice(filmesByGrupo) or ""})
+    else:
+        return jsonify({"Erro": "Número de grupo inválido, envie um número de 1 a 9."})
 
-def buscaFilme(id):
-    filmes[id].append(ia_fuzzy.getFilmeByGrupo(id))
-    buscaFilme(id)
+@app.route('/getFilme/<string:grupo>', methods=['GET'])
+def getFilmeString(grupo):
+    return jsonify({"Erro": "Envie um número de 1 a 9."})
+
+def getFilmeByGrupo(grupo):
+    nome = ia_fuzzy.getFilmeByGrupo(grupo)
+    filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=grupo).all()))
+    if(not nome in filmesByGrupo):
+        filme = Filme(grupo, nome)
+        db.session.add(filme)
+        db.session.commit()
+    getFilmeByGrupo(grupo)
 
 if __name__ == '__main__':
-    for i in range(1,9):
-        t = Thread(target=buscaFilme, args=(str(i),))
-        t.start()
+    for grupo in range(1,10):
+        thread = Thread(target=getFilmeByGrupo, args=(str(grupo),))
+        thread.start()
     app.run(debug=True, host='0.0.0.0', port=port)
