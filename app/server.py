@@ -35,15 +35,6 @@ class Filme(db.Model):
     def getNome(self):
         return self.nome
 
-@app.route('/getFilmes', methods=['GET'])
-def getFilmes():
-    return jsonify({'filmes': list(map(lambda filme: filme.serialize(), Filme.query.all()))})
-
-@app.route('/getFilmes/<int:grupo>', methods=['GET'])
-def getFilmesByGrupo(grupo):
-    return jsonify({'filmes': list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all()))})
-
-
 @app.route('/static/<path:path>')
 def send_static(path):
     return send_from_directory('static', path)
@@ -56,17 +47,19 @@ swaggerui_blueprint = get_swaggerui_blueprint(
     config={
         'app_name': "Topicos Avançados"
     }
-    
 )
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
-# Rota mockada sem processamento da IA para envio do filme.
-@app.route('/getFilme/<int:grupo>', methods=['GET'])
-def getFilme(grupo):
-    return jsonify({"filme": "Avengers: Endgame"})
+@app.route('/getFilmes', methods=['GET'])
+def getFilmes():
+    return jsonify({'filmes': list(map(lambda filme: filme.serialize(), Filme.query.all()))})
+
+@app.route('/getFilmes/<int:grupo>', methods=['GET'])
+def getFilmesByGrupo(grupo):
+    return jsonify({'filmes': list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all()))})
 
 # Rota com processamento da IA para envio do filme.
-@app.route('/getFilmeIA/<int:grupo>', methods=['GET'])
+@app.route('/getFilme/<int:grupo>', methods=['GET'])
 def getFilmeIA(grupo):
     if(grupo>0 and grupo<10):
         filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all()))
