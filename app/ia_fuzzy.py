@@ -16,8 +16,6 @@ import random
 #Se score_filme for alta e ano_do_filme for média/baixo a recomendação é média
 
 # variaveis ponto chave
-#rank_imdb = ctrl.Antecedent(np.arange(0,100,1),'rank_imdb')
-#rank_tomatoes = ctrl.Antecedent(np.arange(0,100,1),'rank_tomatoes')
 ano = ctrl.Antecedent(np.arange(1920,2020,1),'ano')
 rank = ctrl.Antecedent(np.arange(0,100,1),'rank')
 recomendacao = ctrl.Consequent(np.arange(0,100,1),'recomendacao')
@@ -44,53 +42,21 @@ rule5 = ctrl.Rule(rank['pessimo'] & ano['atual'] | rank['pessimo'] & ano['classi
 recomendacao_crtl = ctrl.ControlSystem([rule1,rule2,rule3,rule4,rule5])
 recomendacao_simulacao = ctrl.ControlSystemSimulation(recomendacao_crtl)
 
-def listaFilmesSugestao (filme):
-    lista_filmes = {'filme_rep': [], 'rating_rep': [], 'ano_rep': [], 'filme_rat':[], 'ano_rat':[], 'rating_rat':[]}
-    #var = api_imdb.buscaEssencialFilme(filme)
-    #sug_film = rotten_tomatoes.buscaTopsFilmesPorGenero(var['genero'][0]) 
-    sug_film = api_imdb.filmeSugerido(filme)
-    if (len(sug_film['filme_rep'][0]) > 0):
-        for filme in range (len(sug_film['filme_rep'][0])):
-            dados_filme = api_imdb.buscaEssencialFilme(sug_film['filme_rep'][0][filme])
-            lista_filmes['ano_rep'].append(dados_filme['ano'])
-            media_score = (float(dados_filme['popularidade'][0]) * 10)
-            lista_filmes['rating_rep'].append(media_score)
-            lista_filmes['filme_rep'].append(sug_film['filme_rep'][0][filme])
-    for filme in range (len(sug_film['filme_rat'][0])):
-        dados_filme = api_imdb.buscaEssencialFilme(sug_film['filme_rat'][0][filme])
-        lista_filmes['ano_rat'].append(dados_filme['ano'])
-        media_score = (float(dados_filme['popularidade'][0]) * 10)
-        lista_filmes['rating_rat'].append(media_score)
-        lista_filmes['filme_rat'].append(sug_film['filme_rat'][0][filme])    
-    return lista_filmes
-
-def filtroSugestao (filme):
-    filmes_recomendacoes = {'filme_rep':[], 'recomen_rep':[], 'filme_rat':[], 'recomen_rat':[]}
-    lista_filmes = listaFilmesSugestao(filme)
-    if (len(lista_filmes['filme_rep']) > 0):
-        for filme in range (len(lista_filmes['filme_rep'])):
-            recomendacao_simulacao.input['rank'] = lista_filmes['rating_rep'][filme]
-            recomendacao_simulacao.input['ano'] = lista_filmes['ano_rep'][filme]
-            recomendacao_simulacao.compute()
-            filmes_recomendacoes['recomen_rep'].append(recomendacao_simulacao.output['recomendacao'])
-            filmes_recomendacoes['filme_rep'].append(lista_filmes['filme_rep'][filme])
-    for filme in range (len(lista_filmes['filme_rat'])):
-        recomendacao_simulacao.input['rank'] = lista_filmes['rating_rat'][filme]
-        recomendacao_simulacao.input['ano'] = lista_filmes['ano_rat'][filme]
+def filtroSugestao (filme, block_list):
+    filmes_recomendacoes = {'filme':[], 'recomendacao':[]}
+    lista_filmes = api_imdb.listaFilmeSugerido(filme, block_list)
+    for index,filme in enumerate (lista_filmes['filme']):
+        recomendacao_simulacao.input['rank'] = lista_filmes['rating'][index]
+        recomendacao_simulacao.input['ano'] = lista_filmes['ano'][index]
         recomendacao_simulacao.compute()
-        filmes_recomendacoes['recomen_rat'].append(recomendacao_simulacao.output['recomendacao'])
-        filmes_recomendacoes['filme_rat'].append(lista_filmes['filme_rat'][filme])
-    maior_recomen_rep = max(filmes_recomendacoes['recomen_rep'], key=float)
-    posicao_rep = filmes_recomendacoes['recomen_rep'].index(maior_recomen_rep)
-    nome_filme_rep = filmes_recomendacoes['filme_rep'][posicao_rep]
-    maior_recomen_rat = max(filmes_recomendacoes['recomen_rat'], key=float)
-    posicao = filmes_recomendacoes['recomen_rat'].index(maior_recomen_rat)
-    nome_filme_rat = filmes_recomendacoes['filme_rat'][posicao]
-    #return nome_filme_rep, nome_filme_rat
-    return nome_filme_rep
+        filmes_recomendacoes['recomendacao'].append(recomendacao_simulacao.output['recomendacao'])
+        filmes_recomendacoes['filme'].append(lista_filmes['filme'][index])
+    filme_escolhido = filmes_recomendacoes['filme'].pop(filmes_recomendacoes['recomendacao'].index(max(filmes_recomendacoes['recomendacao'], key=float)))
+    return filme_escolhido
 
-#print('\n \nO filme com maior recomendação é : ', filtroSugestao('Les Misérables'))
+#array = []
+#print('\n \nO filme com maior recomendação é : ', filtroSugestao("Star Wars: The Clone Wars", array))
 
-def getFilmeByGrupo(id):
+def getFilmeByGrupo(id, block_list):
     filmesGrupo =  filmes.filmesGrupo();
-    return filtroSugestao(random.choice(filmesGrupo[id]))
+    return filtroSugestao(random.choice(filmesGrupo[id]), block_list)

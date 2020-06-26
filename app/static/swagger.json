@@ -1,0 +1,109 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Topicos Avançados"
+    },
+    "serves": [
+        {
+            "url": "/"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Topicos Avançados",
+            "description": "API para recomendações de filmes"
+        }
+    ],
+    "paths": {
+        "/getFilmes": {
+            "get": {
+                "tags": [
+                    "Recomendação de filmes"
+                ],
+                "summary": "Retorna todos dos filmes da base",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/filme"
+                        }
+                    }
+                }
+            }
+        },
+        "/getFilmes/{id}": {
+            "get": {
+                "tags": [
+                    "Recomendação de filmes"
+                ],
+                "summary": "Retorna os filmes por grupo",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Id do grupo",
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "$ref": "#/components/schemas/filme"
+                        }
+                    }
+                }
+            }
+        },
+        "/getFilme/{id}": {
+            "get": {
+                "tags": [
+                    "Recomendação de filmes"
+                ],
+                "summary": "Retorna o filme recomendado por grupo",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Id do grupo",
+                        "schema": {
+                            "$ref": "#/components/schemas/id"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/filme"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "filme": {
+                "properties": {
+                    "filme": {
+                        "type": "string"
+                    }
+                }
+            },
+            "id": {
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
