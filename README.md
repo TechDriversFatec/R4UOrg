@@ -55,3 +55,13 @@ Projeto de inteligência artificial, para interação com a assistente virtual d
 - Rotas já fazendo a comunicação com o banco do Docker.
 - Filtro com base nos dados do banco, de forma que as recomendações da IA façam sentido.
 - Coleta de dados (planilha de filmes favoritos de todos os alunos envolvidos no PI).
+
+### Quinta entrega
+
+- Estudo de alternativas para melhoria no tempo de resposta (Redis, Schedule, Banco de Dados).
+- Melhorias na utilização da API do IMDB.
+- Inclusão de tratamento de erros.
+- Inclusão de filtro para que fossem recomendados filmes diferentes.
+- Criação da tabelas com os filmes a serem recomendados e novas rotas de visualização.
+- Cadastro dos filmes a serem recomendados no banco de dados.
+- Integração com o Swagger.
