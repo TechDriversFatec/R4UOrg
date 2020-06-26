@@ -17,7 +17,7 @@ import random
 
 # variaveis ponto chave
 ano = ctrl.Antecedent(np.arange(1920,2020,1),'ano')
-rank = ctrl.Antecedent(np.arange(0,100,1),'rank')
+rank = ctrl.Antecedent(np.arange(0,10,1),'rank')
 recomendacao = ctrl.Consequent(np.arange(0,100,1),'recomendacao')
 
 #divide por 4 rank
