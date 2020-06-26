@@ -58,6 +58,7 @@ Projeto de inteligência artificial, para interação com a assistente virtual d
 
 ### Quinta entrega
 
+- Melhoria README.
 - Estudo de alternativas para melhoria no tempo de resposta (Redis, Schedule, Banco de Dados).
 - Melhorias na utilização da API do IMDB.
 - Inclusão de tratamento de erros.
