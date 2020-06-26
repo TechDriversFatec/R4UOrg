@@ -21,7 +21,7 @@
                 "tags": [
                     "Recomendação de filmes"
                 ],
-                "summary": "Retorna todos dos filmes da base",
+                "summary": "Retorna todos os filmes da base",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -83,6 +83,12 @@
                         "schema": {
                             "$ref": "#/components/schemas/filme"
                         }
+                    },
+                    "400": {
+                        "description": "Grupo não encontrado",
+                        "schema": {
+                            "$ref": "#/components/schemas/error"
+                        }
                     }
                 }
             }
@@ -97,9 +103,33 @@
                     }
                 }
             },
+            "filmes": {
+                "type": "object",
+                "properties": {
+                    "grupo": {
+                        "type": "string",
+                        "format": "string"
+                    },
+                    "id": {
+                        "type": "number",
+                        "format": "number"
+                    },
+                    "nome": {
+                        "type": "string",
+                        "format": "string"
+                    }
+                }
+            },
             "id": {
                 "properties": {
                     "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "error": {
+                "properties": {
+                    "Erro": {
                         "type": "string"
                     }
                 }
