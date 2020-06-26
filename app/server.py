@@ -50,38 +50,42 @@ swaggerui_blueprint = get_swaggerui_blueprint(
 )
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
+# Rota que retorna todos os filmes cadastrados no banco.
 @app.route('/getFilmes', methods=['GET'])
 def getFilmes():
     return jsonify({'filmes': list(map(lambda filme: filme.serialize(), Filme.query.all()))})
 
+# Rota que retorna todos os nomes dos filmes cadastrados por grupo.
 @app.route('/getFilmes/<int:grupo>', methods=['GET'])
 def getFilmesByGrupo(grupo):
-    return jsonify({'filmes': list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all()))})
+    return jsonify({'filmes': sorted(list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all())))})
 
-# Rota com processamento da IA para envio do filme.
+# Rota que retorna o nome de um filme recomendado por grupo.
 @app.route('/getFilme/<int:grupo>', methods=['GET'])
-def getFilmeIA(grupo):
+def getFilme(grupo):
     if(grupo>0 and grupo<10):
         filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all()))
         return jsonify({"filme": filmesByGrupo and random.choice(filmesByGrupo) or ""})
     else:
-        return jsonify({"Erro": "Número de grupo inválido, envie um número de 1 a 9."})
+        return jsonify({"Erro": "Número de grupo inválido, envie um número de 1 a 9."}), 400
 
+# Rota que retorna um erro caso seja enviado uma string invés de um número.
 @app.route('/getFilme/<string:grupo>', methods=['GET'])
 def getFilmeString(grupo):
-    return jsonify({"Erro": "Envie um número de 1 a 9."})
+    return jsonify({"Erro": "Envie um número de 1 a 9."}), 400
 
 def getFilmeByGrupo(grupo):
-    nome = ia_fuzzy.getFilmeByGrupo(grupo)
     filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=grupo).all()))
-    if(not nome in filmesByGrupo):
+    nome = ia_fuzzy.getFilmeByGrupo(grupo, filmesByGrupo)
+    filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=grupo).all()))
+    if(nome not in filmesByGrupo):
         filme = Filme(grupo, nome)
         db.session.add(filme)
         db.session.commit()
-    getFilmeByGrupo(grupo)
+    if(len(filmesByGrupo)<15): getFilmeByGrupo(grupo)
 
 if __name__ == '__main__':
     for grupo in range(1,10):
-        thread = Thread(target=getFilmeByGrupo, args=(str(grupo),))
+        thread = Thread(target=getFilmeByGrupo, args=(str(grupo), ))
         thread.start()
     app.run(debug=True, host='0.0.0.0', port=port)
