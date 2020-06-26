@@ -59,4 +59,4 @@ def filtroSugestao (filme, block_list):
 
 def getFilmeByGrupo(id, block_list):
     filmesGrupo =  filmes.filmesGrupo();
-    return filtroSugestao(random.choice(filmesGrupo[id]), block_list)
+    return filtroSugestao(random.choice(filmesGrupo[id]), (filmesGrupo[id] + block_list))
