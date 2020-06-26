@@ -76,7 +76,7 @@ def getFilmeString(grupo):
 
 def getFilmeByGrupo(grupo):
     filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=grupo).all()))
-    if(len(filmesByGrupo)>15): return
+    if(len(filmesByGrupo)>=15): return
     nome = ia_fuzzy.getFilmeByGrupo(grupo, filmesByGrupo)
     filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=grupo).all()))
     if(nome not in filmesByGrupo):
