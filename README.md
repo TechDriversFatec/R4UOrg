@@ -1,6 +1,30 @@
 ## Tópicos Avançados em Banco de Dados
 
-Projeto de inteligência artificial, para interação com a assistente virtual do primeiro semestre.
+- Introdução do projeto
+
+  - Nosso projeto consiste numa API que se utiliza Inteligência Artificial para fazer interações com uma base de dados preexistente.
+
+- Objetivos
+
+  - O objetivo central do projeto é fazer recomendações inteligentes de filmes baseado no perfil individual de cada usuário.
+
+- Tecnologias utilizadas
+
+  - Python - Escolhemos trabalhar com a linguagem de programação Python devido à sua grande popularidade em sistemas que utilizam Inteligência Artificial. Um outro motivo para a escolha do Python foi visando uma maior integração com os alunos do primeiro semestre, uma vez que muitos deles estão tendo contato com a programação pela primeira vez e isso ajudaria a dar um melhor suporte para eventuais dúvidas.
+  - Flask - Várias funcionalidades úteis na aplicação com Python, sendo a principal delas as rotas de acesso.
+  - Fuzzy - Biblioteca de Inteligência Artificial que permitiu fazer as análises e recomendações.
+  - Postgresql - Banco de dados relacional que guarda a massa de filmes.
+  - SQLAlchemy - Comunicação do Python com o Postgresql.
+  - Docker - Foi utilizado visando eliminar qualquer problema de incompatibilidade entre os membros da equipe, pois o projeto fica exatamente igual para todos independentemente de onde ele é acessado.
+  - Heroku - Utilizado para hospedar e disponibilizar a API online para os alunos.
+  - Sistemas de versionamento de código - Git e Github para uma melhor integração e organização dos códigos da disciplina.
+  - Trello - Organização e controle de tasks pelo Scrum Master e PO e acesso claro de prazos e requisitos pelos outros membros da equipe.
+
+- Conclusão
+
+  - O projeto foi concluído com sucesso alinhado ao objetivo inicial que era desenvolver uma API que utilizasse Inteligência Artificial. Segundo uma pesquisa feita entre os membros da equipe, concluiu-se que seria interessante a utilização de filmes como objeto principal do trabalho. A base de dados da IMDB foi um fator determinante para essa escolha por ser uma biblioteca robusta, testada e consistente, o que nos ajudou muito nos passos iniciais de desenvolvimento.
+
+### Projeto de inteligência artificial, para interação com a assistente virtual do primeiro semestre.
 
 - [x] IA - lógica Fuzzy
 - [x] Elaboração e distribuição da planilha para obtenção de dados - Dados para treinamento IA
