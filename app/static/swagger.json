@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "version": "1.0.0",
-        "title": "Topicos Avançados"
+        "title": "R4U"
     },
     "serves": [
         {
@@ -11,7 +11,7 @@
     ],
     "tags": [
         {
-            "name": "Topicos Avançados",
+            "name": "R4U",
             "description": "API para recomendações de filmes"
         }
     ],
