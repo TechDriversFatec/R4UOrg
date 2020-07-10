@@ -12,7 +12,7 @@ services:
       POSTGRES_USER: fatec
       POSTGRES_PASSWORD: fatec
       POSTGRES_DB: pi
-  
+
   postgres:
     image: postgres
     container_name: postgres
@@ -22,3 +22,9 @@ services:
       POSTGRES_USER: fatec
       POSTGRES_PASSWORD: fatec
       POSTGRES_DB: pi
+
+  sonarqube:
+    image: sonarqube
+    container_name: sonarqubeR4u
+    ports:
+    - 9000:9000

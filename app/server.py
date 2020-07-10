@@ -8,7 +8,7 @@ from threading import Thread
 from flask_swagger_ui import get_swaggerui_blueprint
 
 if (os.environ.get('ENV') != 'prod'):
-    os.environ['DATABASE_URL'] = 'postgres://fatec:fatec@postgres:5432/pi'  
+    os.environ['DATABASE_URL'] = 'postgres://fatec:fatec@postgres:5432/pi'
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -31,7 +31,7 @@ class Filme(db.Model):
             "grupo": self.grupo,
             "nome": self.nome
         }
-    
+
     def getNome(self):
         return self.nome
 
