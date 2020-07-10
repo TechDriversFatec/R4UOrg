@@ -1,7 +1,7 @@
 import pytest
 import requests
 
-url = 'http://192.168.99.100:5001/'
+url = 'http://localhost:5001/'
 
 # os.environ.get('ENV')
 
