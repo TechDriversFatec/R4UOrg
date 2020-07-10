@@ -6,11 +6,13 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from threading import Thread
 from flask_swagger_ui import get_swaggerui_blueprint
+from flask_cors import CORS
 
 if (os.environ.get('ENV') != 'prod'):
     os.environ['DATABASE_URL'] = 'postgres://fatec:fatec@postgres:5432/pi'
 
 app = Flask(__name__)
+CORS(app)
 app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
