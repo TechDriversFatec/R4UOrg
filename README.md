@@ -102,3 +102,7 @@
 
 - Adição de testes dos endpoints getFilme/:grupo
 - Integração com SonarQube
+
+### Entrega final
+
+- Gravação do vídeo para entrega final, com a descrição do projeto e suas funcionalidades, disponível através deste link: **https://drive.google.com/file/d/1vlb_jPh7JLQ6juG7Z4t8Jc76f_8igA4z/view?usp=sharing**
