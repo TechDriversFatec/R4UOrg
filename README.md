@@ -105,4 +105,4 @@
 
 ### Entrega final
 
-- Gravação do vídeo para entrega final, com a descrição do projeto e suas funcionalidades, disponível através deste link: **https://drive.google.com/file/d/1h70NrInP-HhHgSH3lV-fG4N1jmUZ35Fv/view?usp=sharing**
+- Gravação do vídeo para entrega final, com a descrição do projeto e suas funcionalidades, disponível através deste link: **https://drive.google.com/file/d/1UH4Pm_Riya0fKlGbrmdKlOIg_AA1Jj_d/view?usp=sharing**
