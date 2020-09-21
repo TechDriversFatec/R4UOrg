@@ -16,7 +16,7 @@
   - Postgresql - Banco de dados relacional que guarda a massa de filmes.
   - SQLAlchemy - Comunicação do Python com o Postgresql.
   - Docker - Foi utilizado visando eliminar qualquer problema de incompatibilidade entre os membros da equipe, pois o projeto fica exatamente igual para todos independentemente de onde ele é acessado.
-  - Heroku - Utilizado para hospedar e disponibilizar a API online para os alunos.
+  - Cloud AWS - Utilizado para hospedar e disponibilizar a API online para o cliente.
   - Sistemas de versionamento de código - Git e Github para uma melhor integração e organização dos códigos da disciplina.
   - Trello - Organização e controle de tasks pelo Scrum Master e PO e acesso claro de prazos e requisitos pelos outros membros da equipe.
   - Pytest - Biblioteca de testes para Python.
@@ -36,7 +36,7 @@
 
 ### Quick Start
 
-- Como fazer a instalação do projeto
+- Como acessar o projeto
 
   - Ter o Python instalado na sua máquina
   - Instalar um editor de texto da sua preferência (indicamos VSCode ou Pycharm)
