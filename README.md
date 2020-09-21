@@ -61,4 +61,4 @@
 ### Primeira entrega
 
 - FlyWay como database automation;
-- Deploy do código backend para a AWS;
+- Deploy do código backend para a Cloud AWS;
