@@ -32,16 +32,6 @@ services:
       POSTGRES_USER: fatec
       POSTGRES_PASSWORD: fatec
       POSTGRES_DB: pi
-
-  postgres:
-    image: postgres
-    container_name: postgres
-    ports:
-    - 5432:5432
-    environment:
-      POSTGRES_USER: fatec
-      POSTGRES_PASSWORD: fatec
-      POSTGRES_DB: pi
     depends_on: 
       - flyway
 
