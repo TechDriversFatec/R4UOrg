@@ -1,0 +1,9 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/r4u_application
+permissions:
+  - object: /home/ubuntu/r4u_application
+    owner: ubuntu
+    group: ubuntu
