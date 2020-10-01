@@ -62,5 +62,3 @@
 
 - FlyWay como database automation;
 - Deploy do código backend para a Cloud AWS;
-
-deploy test
