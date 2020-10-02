@@ -9,14 +9,14 @@ permissions:
     group: ubuntu
 hooks:
   ApplicationStop:
-    - location: /application_stop/stop_r4u.sh
+    - location: scripts/application_stop/stop_r4u.sh
       timeout: 20
       runas: ubuntu
   BeforeInstall:
-    - location: /before_install/remove_old_code_r4u.sh
+    - location: scripts/before_install/remove_old_code_r4u.sh
       timeout: 10
       runas: ubuntu
   ApplicationStart:
-    - location: /application_start/start_r4u.sh
+    - location: scripts/application_start/start_r4u.sh
       timeout: 20
       runas: ubuntu
