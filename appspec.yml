@@ -10,13 +10,12 @@ permissions:
 hooks:
   ApplicationStop:
     - location: scripts/application_stop/stop_r4u.sh
-      timeout: 20
+      runas: root
+    - location: scripts/before_install/clean_docker.sh
       runas: root
   BeforeInstall:
     - location: scripts/before_install/remove_old_code_r4u.sh
-      timeout: 10
       runas: root
   ApplicationStart:
     - location: scripts/application_start/start_r4u.sh
-      timeout: 300
       runas: root
