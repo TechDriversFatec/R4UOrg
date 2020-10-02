@@ -9,14 +9,14 @@ permissions:
     group: ubuntu
 hooks:
   ApplicationStop:
-    - location: /home/ubuntu/aws/deployment/application_stop/stop_r4u.sh
+    - location: /application_stop/stop_r4u.sh
       timeout: 20
       runas: ubuntu
   BeforeInstall:
-    - location: /home/ubuntu/aws/deployment/before_install/remove_old_code_r4u.sh
+    - location: /before_install/remove_old_code_r4u.sh
       timeout: 10
       runas: ubuntu
   ApplicationStart:
-    - location: /home/ubuntu/aws/deployment/application_start/start_r4u.sh
+    - location: /application_start/start_r4u.sh
       timeout: 20
       runas: ubuntu
