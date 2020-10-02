@@ -1,14 +1,6 @@
 version: '3'
 
 services:
-  flyway:
-    image: boxfuse/flyway:5-alpine
-    command: -url=jdbc:postgresql://postgres:5432/pi -schemas=public -user=fatec -password=fatec -connectRetries=10 migrate
-    volumes:
-      - ./migration:/flyway/sql
-    depends_on:
-      - postgres
-
   postgres:
     image: postgres
     container_name: postgres
@@ -33,16 +25,28 @@ services:
       POSTGRES_PASSWORD: fatec
       POSTGRES_DB: pi
     depends_on: 
-      - flyway
+      - postgres
+
+  flyway:
+    image: boxfuse/flyway:5-alpine
+    command: -url=jdbc:postgresql://postgres:5432/pi -schemas=public -user=fatec -password=fatec -connectRetries=10 migrate
+    volumes:
+      - ./migration:/flyway/sql
+    depends_on:
+      - app
 
   sonarqube:
     image: sonarqube
     container_name: sonarqubeR4u
     ports:
     - 9000:9000
+    depends_on: 
+    - flyway
 
   nginx:
     build: ./nginx
     container_name: nginx
     ports:
     - 6001:6001
+    depends_on: 
+    - sonarqube
