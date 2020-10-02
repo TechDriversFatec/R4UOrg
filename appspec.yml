@@ -18,5 +18,5 @@ hooks:
       runas: ubuntu
   ApplicationStart:
     - location: scripts/application_start/start_r4u.sh
-      timeout: 20
+      timeout: 300
       runas: ubuntu
