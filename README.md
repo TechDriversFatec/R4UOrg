@@ -62,3 +62,7 @@
 
 - FlyWay como database automation;
 - Deploy do código backend para a Cloud AWS;
+
+### Segunda entrega
+
+- Ambiente configurado com Jenkins CI;
