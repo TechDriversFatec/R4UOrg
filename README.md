@@ -58,18 +58,19 @@
   - JetBrains: https://www.jetbrains.com/pt-br/pycharm/
   - Sonar Scanner: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
 
-####Cronograma de entregas
-#####Sprint 1
+#### Cronograma de entregas
+
+##### Sprint 1
 - Cloud
 - Database Automation
 
-#####Sprint 2
+##### Sprint 2
 - CI
 
-#####Sprint 3
+##### Sprint 3
 - Testing
 
-#####Sprint 4
+##### Sprint 4
 - Load Balancing
 
 ------------
