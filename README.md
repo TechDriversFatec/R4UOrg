@@ -58,7 +58,32 @@
   - JetBrains: https://www.jetbrains.com/pt-br/pycharm/
   - Sonar Scanner: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
 
+### Cronograma de entregas
+
+##### Sprint 1
+- Cloud
+- Database Automation
+
+##### Sprint 2
+- CI
+
+##### Sprint 3
+- Testing
+
+##### Sprint 4
+- Load Balancing
+
+------------
+
+
+
 ### Primeira entrega
 
 - FlyWay como database automation;
 - Deploy do código backend para a Cloud AWS;
+
+### Segunda entrega
+
+- Ambiente configurado com Jenkins CI;
+
+test
