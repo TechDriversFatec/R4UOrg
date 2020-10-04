@@ -58,7 +58,7 @@
   - JetBrains: https://www.jetbrains.com/pt-br/pycharm/
   - Sonar Scanner: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
 
-#### Cronograma de entregas
+### Cronograma de entregas
 
 ##### Sprint 1
 - Cloud
