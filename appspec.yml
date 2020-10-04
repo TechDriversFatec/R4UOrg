@@ -7,15 +7,3 @@ permissions:
   - object: /home/ubuntu/r4u_application
     owner: root
     group: root
-hooks:
-  ApplicationStop:
-    - location: scripts/application_stop/stop_r4u.sh
-      runas: root
-    - location: scripts/before_install/clean_docker.sh
-      runas: root
-  BeforeInstall:
-    - location: scripts/before_install/remove_old_code_r4u.sh
-      runas: root
-  ApplicationStart:
-    - location: scripts/application_start/start_r4u.sh
-      runas: root
