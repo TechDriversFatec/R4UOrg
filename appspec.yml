@@ -8,10 +8,6 @@ permissions:
     owner: root
     group: root
 hooks:
-  ApplicationStop:
-    - location: scripts/application_stop/stop_r4u.sh
-      timeout: 20
-      runas: root
   BeforeInstall:
     - location: scripts/before_install/remove_old_code_r4u.sh
       timeout: 10
