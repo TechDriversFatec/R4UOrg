@@ -85,5 +85,3 @@
 ### Segunda entrega
 
 - Ambiente configurado com Jenkins CI;
-
-test
