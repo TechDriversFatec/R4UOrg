@@ -1,4 +1,4 @@
-## Tópicos Avançados em Banco de Dados
+## Laboratório de Projeto de Banco de Dados
 
 - Introdução do projeto
 
