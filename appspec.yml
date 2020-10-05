@@ -12,6 +12,6 @@ hooks:
     - location: scripts/before_install/remove_old_code_r4u.sh
       timeout: 20
       runas: root
-    - location: scropts/before_install/clean_docker.sh
+    - location: scripts/before_install/clean_docker.sh
       timeout: 20
       runas: root
