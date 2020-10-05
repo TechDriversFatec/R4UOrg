@@ -84,4 +84,4 @@
 
 ### Segunda entrega
 
-- Ambiente configurado com Jenkins CI;
+- Ambiente configurado com Jenkins CI e AWS Code Deploy;
