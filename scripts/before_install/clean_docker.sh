@@ -1,5 +1,5 @@
 #!/bin/sh
-cd home/ubuntu/
+cd /home/ubuntu/
 
 . cron/docker_prune.sh
 docker kill $(docker ps -q)
