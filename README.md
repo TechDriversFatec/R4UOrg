@@ -16,7 +16,7 @@
   - Postgresql - Banco de dados relacional que guarda a massa de filmes.
   - SQLAlchemy - Comunicação do Python com o Postgresql.
   - Docker - Foi utilizado visando eliminar qualquer problema de incompatibilidade entre os membros da equipe, pois o projeto fica exatamente igual para todos independentemente de onde ele é acessado.
-  - Heroku - Utilizado para hospedar e disponibilizar a API online para os alunos.
+  - Cloud AWS - Utilizado para hospedar e disponibilizar a API online para o cliente.
   - Sistemas de versionamento de código - Git e Github para uma melhor integração e organização dos códigos da disciplina.
   - Trello - Organização e controle de tasks pelo Scrum Master e PO e acesso claro de prazos e requisitos pelos outros membros da equipe.
   - Pytest - Biblioteca de testes para Python.
@@ -36,7 +36,7 @@
 
 ### Quick Start
 
-- Como fazer a instalação do projeto
+- Como acessar o projeto
 
   - Ter o Python instalado na sua máquina
   - Instalar um editor de texto da sua preferência (indicamos VSCode ou Pycharm)
@@ -60,49 +60,5 @@
 
 ### Primeira entrega
 
-- Levantamento de requisitos, planejamento das sprints e organização de tasks no trello.
-- Configuração do ambiente de desenvolvimento docker com python, postgres e bibliotecas de python.
-- Criação de tabelas, relacionamentos e modelagem.
-- Preparação de scripts sql para inserção no banco, tanto inglês quanto em português.
-- Estudo das bibliotecas IMDB e JustWatch.
-- Estudo para criação de rota inicial e conexão com o banco.
-
-### Segunda entrega
-
-- Implementação da conexão com banco.
-- Criação dos models de gênero e usuário.
-- Criação das rotas iniciais para cadastro de gênero atrelado à um grupo.
-- Implementação inicial da busca dos dados da IMDB.
-
-### Terceira entrega
-
-- Rota de exemplo para disponibilizar ao primeiro semestre.
-- PoC da funcionalidade do IA com a interação dos dados analisados pelas bibliotecas _IMDB_ e _RottenTomatoes_.
-- Pesquisa e aplicação da biblioteca _Scikit-Fuzzy_ para desenvolvimento IA.
-- Desenvolvimento e conexão com banco.
-
-### Quarta entrega
-
-- Rotas já fazendo a comunicação com o banco do Docker.
-- Filtro com base nos dados do banco, de forma que as recomendações da IA façam sentido.
-- Coleta de dados (planilha de filmes favoritos de todos os alunos envolvidos no PI).
-
-### Quinta entrega
-
-- Melhoria README.
-- Estudo de alternativas para melhoria no tempo de resposta (Redis, Schedule, Banco de Dados).
-- Melhorias na utilização da API do IMDB.
-- Inclusão de tratamento de erros.
-- Inclusão de filtro para que fossem recomendados filmes diferentes.
-- Criação da tabelas com os filmes a serem recomendados e novas rotas de visualização.
-- Cadastro dos filmes a serem recomendados no banco de dados.
-- Integração com o Swagger.
-
-### Sexta entrega
-
-- Adição de testes dos endpoints getFilme/:grupo
-- Integração com SonarQube
-
-### Entrega final
-
-- Gravação do vídeo para entrega final, com a descrição do projeto e suas funcionalidades, disponível através deste link: **https://drive.google.com/file/d/1UH4Pm_Riya0fKlGbrmdKlOIg_AA1Jj_d/view?usp=sharing**
+- FlyWay como database automation;
+- Deploy do código backend para a Cloud AWS;

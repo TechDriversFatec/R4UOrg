@@ -4,7 +4,7 @@ CREATE TABLE public.filme
     grupo character varying(1) COLLATE pg_catalog."default",
     nome character varying(200) COLLATE pg_catalog."default",
     CONSTRAINT filme_pkey PRIMARY KEY (id)
-); 
+);
 
 CREATE SEQUENCE public.seq
     INCREMENT 1
