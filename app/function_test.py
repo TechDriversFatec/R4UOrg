@@ -5,19 +5,20 @@ user='fatec', password='fatec')
 
 cur = con.cursor()
 
+#Adicionar o valor das variáveis aqui, até que façamos o teste automatizado real
 nome = ''
 genero = ''
 tabela = ''
 
-def insere(nome, genero):
-    sql = "insert into FILME (nome, genero) values ('{}','{}')".format('nome', 'genero')
+def insere(tabela, nome, genero):
+    sql = "insert into {} (nome, genero) values ('{}','{}')".format(tabela, nome, genero)
     cur.execute(sql)
     con.commit()
     con.close()
     
 
 def consulta(tabela):
-    cur.execute('select * from {tabela}').format(tabela)
+    cur.execute('select * from {}').format(tabela)
     recset = cur.fetchall()
     for rec in recset:
         print (rec)
@@ -25,7 +26,7 @@ def consulta(tabela):
     
 def main():
     consulta(tabela)
-    insere(nome, genero)
+    insere(tabela, nome, genero)
 
 if __name__ == "__main__":
     main()
