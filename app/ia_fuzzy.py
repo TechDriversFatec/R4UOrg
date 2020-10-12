@@ -1,5 +1,4 @@
 import api_imdb
-import filmes
 import numpy as np
 import skfuzzy as fuzzy
 from skfuzzy import control as ctrl
@@ -57,6 +56,5 @@ def filtroSugestao (filme, block_list):
 #array = []
 #print('\n \nO filme com maior recomendação é : ', filtroSugestao("Star Wars: The Clone Wars", array))
 
-def getFilmeByGrupo(id, block_list):
-    filmesGrupo =  filmes.filmesGrupo();
-    return filtroSugestao(random.choice(filmesGrupo[id]), (filmesGrupo[id] + block_list))
+def getFilmeByGrupo(filmes, block_list):
+    return filtroSugestao(random.choice(filmes), (filmes + block_list))
