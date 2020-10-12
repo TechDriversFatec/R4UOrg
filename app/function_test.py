@@ -1,9 +1,13 @@
 import psycopg2
 
-con = psycopg2.connect(host='', database='',
-user='fatec', password='fatec')
+con = psycopg2.connect(host='localhost', database='regiao',
+user='postgres', password='postgres123')
 
 cur = con.cursor()
+
+nome = ''
+genero = ''
+tabela = ''
 
 def insere(nome, genero):
     sql = "insert into FILME (nome, genero) values ('{}','{}')".format('nome', 'genero')
@@ -18,3 +22,10 @@ def consulta(tabela):
     for rec in recset:
         print (rec)
     con.close()
+    
+def main():
+    consulta(tabela)
+    insere(nome, genero)
+
+if __name__ == "__main__":
+    main()
