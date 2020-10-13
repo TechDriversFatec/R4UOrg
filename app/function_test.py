@@ -24,9 +24,11 @@ def consulta(tabela):
         print (rec)
     
 def main():
+    cur.execute("CREATE TABLE TEST_FILME AS SELECT * FROM FILME")
     consulta(tabela)
     insere(tabela, nome, genero)
+    cur.execute("DROP TABLE TEST_FILME")
     con.close()
-    
+
 if __name__ == "__main__":
     main()
