@@ -1,31 +1,31 @@
 import psycopg2
 
-con = psycopg2.connect(host='localhost', database='',
+con = psycopg2.connect(host='localhost', database='pi',
 user='fatec', password='fatec')
 
 cur = con.cursor()
 
-nome = ''
-genero = ''
-tabela = ''
+nome = 'Test'
+grupo = 5
+tabela = 'TEST_FILME'
 
 def insere(nome, genero):
-    sql = "insert into FILME (nome, genero) values ('{}','{}')".format('nome', 'genero')
+    sql = "insert into TEST_FILME (id, nome, grupo) values (nextval('seq'),'{}','{}')".format(nome, grupo)
     cur.execute(sql)
     con.commit()
-    con.close()
     
 
 def consulta(tabela):
-    cur.execute('select * from {tabela}').format(tabela)
+    sintaxe = 'select * from {}'.format(tabela)
+    cur.execute(sintaxe)
     recset = cur.fetchall()
     for rec in recset:
         print (rec)
-    con.close()
     
 def main():
     consulta(tabela)
-    insere(nome, genero)
+    insere(nome, grupo)
+    con.close()
 
 if __name__ == "__main__":
     main()
