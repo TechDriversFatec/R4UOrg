@@ -40,17 +40,14 @@ class Filme(db.Model):
 class Recommendation(db.Model):
     id = db.Column(db.Integer, db.Sequence('seq_recommendation'), primary_key=True)
     nome = db.Column(db.String(200))
-    genero = db.Column(db.String(200))
 
     def __init__(self, nome, genero):
         self.nome = nome
-        self.genero = genero
 
     def serialize(self):
         return {
             "id": self.id,
-            "nome": self.nome,
-            "genero": self.genero
+            "nome": self.nome
         }
 
     def getNome(self):
@@ -79,9 +76,9 @@ def getFilme(genero):
     return jsonify({"filme": filmesByGrupo and random.choice(filmesByGrupo) or ""})
 
 # Rota que retorna um dos filmes cadastrados na tabela recommendation.
-@app.route('/getRecommendation/<genero>', methods=['GET'])
-def getRecommendation(genero):
-    filmesByGrupo = list(map(lambda recommendation: recommendation.getNome(), Recommendation.query.filter_by(genero=str(genero)).all()))
+@app.route('/getRecommendation', methods=['GET'])
+def getRecommendation():
+    filmesByGrupo = list(map(lambda recommendation: recommendation.getNome(), Recommendation.query.all()))
     return jsonify({"filme": filmesByGrupo and random.choice(filmesByGrupo) or ""})
 
 
@@ -92,7 +89,7 @@ def getFilmeByGrupo():
     nome = ia_fuzzy.getFilmeByGrupo(filmes, recommendations)
     filmesByGrupo = list(map(lambda recommendation: recommendation.getNome(), Recommendation.query.all()))
     if(nome not in filmesByGrupo):
-        filme = Recommendation(nome, "")
+        filme = Recommendation(nome)
         db.session.add(filme)
         db.session.commit()
     getFilmeByGrupo()

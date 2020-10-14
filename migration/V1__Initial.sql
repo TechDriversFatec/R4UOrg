@@ -17,7 +17,6 @@ CREATE TABLE public.recommendation
 (
     id integer NOT NULL,
     nome character varying(200) COLLATE pg_catalog."default",
-    genero character varying(200) COLLATE pg_catalog."default",
     CONSTRAINT filme_r4u_pkey PRIMARY KEY (id)
 );
 
