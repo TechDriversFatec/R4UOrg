@@ -37,6 +37,7 @@ def insere(tabela, nome, genero):
     sql = "insert into {} (id ,nome, genero) values (nextval('seq_filme'), '{}','{}')".format(tabela, nome, genero)
     cur.execute(sql)
     con.commit()
+    con.close()
     
 
 def consulta(tabela):
@@ -45,6 +46,7 @@ def consulta(tabela):
     recset = cur.fetchall()
     for rec in recset:
         print (rec)
+    con.close()
     
 def consultaFilmeNome(tabela, nome):
     sintaxe = "select * from {} where nome = '{}'".format(tabela, nome)
