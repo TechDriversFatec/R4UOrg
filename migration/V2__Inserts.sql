@@ -18,7 +18,7 @@ INSERT INTO FILME (ID, NOME, GENERO) VALUES(17, 'A Clockwork Orange','Drama');
 INSERT INTO FILME (ID, NOME, GENERO) VALUES(18, 'Finding Forrester','Drama');
 INSERT INTO FILME (ID, NOME, GENERO) VALUES(19, 'Le huitième jour','Drama');
 INSERT INTO FILME (ID, NOME, GENERO) VALUES(20, 'Gisaengchung','Thriller');    
-INSERT INTO FILME (ID, NOME, GENERO) VALUES(21, 'The Neon Demon','Horro');
+INSERT INTO FILME (ID, NOME, GENERO) VALUES(21, 'The Neon Demon','Horror');
 INSERT INTO FILME (ID, NOME, GENERO) VALUES(22, 'Blow','Crime');
 INSERT INTO FILME (ID, NOME, GENERO) VALUES(23, 'Constantine','Action');
 INSERT INTO FILME (ID, NOME, GENERO) VALUES(24, '12 Strong','Action');
