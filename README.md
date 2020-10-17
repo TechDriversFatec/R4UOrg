@@ -86,4 +86,7 @@
 
 - Ambiente configurado com Jenkins CI e AWS Code Deploy;
 
-.
+### Terceira entrega
+
+- Criação e execução de testes automatizados utilizando a biblioteca Pytest
+
