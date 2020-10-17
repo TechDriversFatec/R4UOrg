@@ -1,6 +1,9 @@
 import psycopg2
 import json
 import pytest
+import requests
+
+url = 'http://localhost:5001/'
 
 with open('./test_config.json') as fj:
     data = json.load(fj)
@@ -53,3 +56,8 @@ def test_validaCriaFilme():
 @xfail
 def test_consultaGenero():
     assert consultaFilmeGenero() == data['Filme_Invalido']
+
+def test_filme_genero():
+    response = requests.get(url + 'getFilme/Drama')
+    assert response.status_code == 200
+    con.close()
