@@ -2,11 +2,12 @@ import psycopg2
 import json
 import pytest
 
+#Abre o arquivo JSON no qual vamos ler os dados para efetuar os testes
 with open('./test_config.json') as fj:
     data = json.load(fj)
 
+#Abre a conexão com o banco e o cursor
 con = psycopg2.connect(host='localhost', database='pi', user='fatec', password='fatec')
-
 cur = con.cursor()
 cur.execute("CREATE TABLE TEST_FILME AS SELECT * FROM FILME")
 
@@ -41,6 +42,8 @@ def consultaFilmeGenero():
     recset = cur.fetchall()
     return recset[0][1]
 
+
+#Vamos separar as funções de teste abaixo para um arquivo a parte na próxima sprint -Bruno
 def test_consultaNome():
     assert consultaFilmeNome() == data['Filme_Valido']
     
