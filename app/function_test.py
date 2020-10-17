@@ -52,4 +52,8 @@ def test_validaCriaFilme():
 
 @xfail
 def test_consultaGenero():
-    assert consultaFilmeGenero() == data['Filme_Invalido']
+    assert consultaFilmeGenero() == data['Genero_Invalido']
+
+@xfail
+def test_consultaFilme():
+    assert consultaFilmeNome() == data['Filme_Invalido']
