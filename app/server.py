@@ -19,18 +19,34 @@ migrate = Migrate(app, db)
 port = int(os.environ.get("PORT", 5000))
 
 class Filme(db.Model):
-    id = db.Column(db.Integer, db.Sequence('seq'), primary_key=True)
-    grupo = db.Column(db.String(1))
+    id = db.Column(db.Integer, db.Sequence('seq_filme'), primary_key=True)
+    nome = db.Column(db.String(200))
+    genero = db.Column(db.String(200))
+
+    def __init__(self, nome, genero):
+        self.nome = nome
+        self.genero = genero
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "genero": self.genero
+        }
+
+    def getNome(self):
+        return self.nome
+
+class Recommendation(db.Model):
+    id = db.Column(db.Integer, db.Sequence('seq_recommendation'), primary_key=True)
     nome = db.Column(db.String(200))
 
-    def __init__(self, grupo, nome):
-        self.grupo = grupo
+    def __init__(self, nome, genero):
         self.nome = nome
 
     def serialize(self):
         return {
             "id": self.id,
-            "grupo": self.grupo,
             "nome": self.nome
         }
 
@@ -52,43 +68,33 @@ swaggerui_blueprint = get_swaggerui_blueprint(
 )
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
 
-# Rota que retorna todos os filmes cadastrados no banco.
-@app.route('/getFilmes', methods=['GET'])
-def getFilmes():
-    return jsonify({'filmes': list(map(lambda filme: filme.serialize(), Filme.query.all()))})
 
-# Rota que retorna todos os nomes dos filmes cadastrados por grupo.
-@app.route('/getFilmes/<int:grupo>', methods=['GET'])
-def getFilmesByGrupo(grupo):
-    return jsonify({'filmes': sorted(list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all())))})
+# Rota que retorna um dos filmes cadastrados na tabela filme por genero.
+@app.route('/getFilme/<genero>', methods=['GET'])
+def getFilme(genero):
+    filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(genero=str(genero)).all()))
+    return jsonify({"filme": filmesByGrupo and random.choice(filmesByGrupo) or ""})
 
-# Rota que retorna o nome de um filme recomendado por grupo.
-@app.route('/getFilme/<int:grupo>', methods=['GET'])
-def getFilme(grupo):
-    if(grupo>0 and grupo<10):
-        filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=str(grupo)).all()))
-        return jsonify({"filme": filmesByGrupo and random.choice(filmesByGrupo) or ""})
-    else:
-        return jsonify({"Erro": "Número de grupo inválido, envie um número de 1 a 9."}), 400
+# Rota que retorna um dos filmes cadastrados na tabela recommendation.
+@app.route('/getRecommendation', methods=['GET'])
+def getRecommendation():
+    filmesByGrupo = list(map(lambda recommendation: recommendation.getNome(), Recommendation.query.all()))
+    return jsonify({"filme": filmesByGrupo and random.choice(filmesByGrupo) or ""})
 
-# Rota que retorna um erro caso seja enviado uma string invés de um número.
-@app.route('/getFilme/<string:grupo>', methods=['GET'])
-def getFilmeString(grupo):
-    return jsonify({"Erro": "Envie um número de 1 a 9."}), 400
 
-def getFilmeByGrupo(grupo):
-    filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=grupo).all()))
-    if(len(filmesByGrupo)>=15): return
-    nome = ia_fuzzy.getFilmeByGrupo(grupo, filmesByGrupo)
-    filmesByGrupo = list(map(lambda filme: filme.getNome(), Filme.query.filter_by(grupo=grupo).all()))
+def getFilmeByGrupo():
+    filmes = list(map(lambda filme: filme.getNome(), Filme.query.all()))
+    recommendations = list(map(lambda recommendation: recommendation.getNome(), Recommendation.query.all()))
+    if(len(recommendations) >= 15): return
+    nome = ia_fuzzy.getFilmeByGrupo(filmes, recommendations)
+    filmesByGrupo = list(map(lambda recommendation: recommendation.getNome(), Recommendation.query.all()))
     if(nome not in filmesByGrupo):
-        filme = Filme(grupo, nome)
+        filme = Recommendation(nome)
         db.session.add(filme)
         db.session.commit()
-    getFilmeByGrupo(grupo)
+    getFilmeByGrupo()
 
 if __name__ == '__main__':
-    for grupo in range(1,10):
-        thread = Thread(target=getFilmeByGrupo, args=(str(grupo), ))
-        thread.start()
+    thread = Thread(target=getFilmeByGrupo)
+    thread.start()
     app.run(debug=True, host='0.0.0.0', port=port)
