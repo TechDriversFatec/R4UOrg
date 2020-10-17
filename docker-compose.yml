@@ -35,3 +35,18 @@ services:
     depends_on:
       - app
 
+  sonarqube:
+    image: sonarqube
+    container_name: sonarqubeR4u
+    ports:
+    - 9000:9000
+    depends_on: 
+    - flyway
+    
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+    - 6001:6001
+    depends_on: 
+    - sonarqube
