@@ -12,11 +12,14 @@ cur.execute("CREATE TABLE TEST_FILME AS SELECT * FROM FILME")
 
 xfail = pytest.mark.xfail
 
-def insere(tabela, nome, genero):
+def validaCriaFilme(tabela, nome, genero):
     sql = "insert into {} (id ,nome, genero) values (nextval('seq_filme'), '{}','{}')".format(tabela, nome, genero)
     cur.execute(sql)
     con.commit()
-    con.close()
+    sql = "select * from {} where id = currval('seq_filme')".format(tabela)
+    cur.execute(sql)
+    recset = cur.fetchall()
+    return recset[0][1]
 
 def consulta(tabela):
     sintaxe = 'select * from {}'.format(tabela)
@@ -40,6 +43,12 @@ def consultaFilmeGenero():
 
 def test_consultaNome():
     assert consultaFilmeNome() == data['Filme_Valido']
+    
+def test_validaCriaFilme():
+    tabela = 'TEST_FILME'
+    nome = 'Joker'
+    genero = 'Drama'
+    assert validaCriaFilme(tabela, nome, genero) == nome
 
 @xfail
 def test_consultaGenero():
