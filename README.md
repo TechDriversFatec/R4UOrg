@@ -71,7 +71,13 @@
 - Testing
 
 ##### Sprint 4
+- Testing & CI
+
+##### Sprint 5
 - Load Balancing
+
+##### Sprint 6
+- Pendente
 
 ------------
 
