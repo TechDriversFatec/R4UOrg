@@ -41,7 +41,7 @@ class Recommendation(db.Model):
     id = db.Column(db.Integer, db.Sequence('seq_recommendation'), primary_key=True)
     nome = db.Column(db.String(200))
 
-    def __init__(self, nome, genero):
+    def __init__(self, nome):
         self.nome = nome
 
     def serialize(self):

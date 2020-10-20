@@ -13,7 +13,7 @@ with open('./test_config.json') as fj:
 con = psycopg2.connect(host='localhost', database='pi', user='fatec', password='fatec')
 cur = con.cursor()
 
-cur.execute("CREATE TABLE TEST_FILME AS SELECT * FROM FILME")
+#cur.execute("CREATE TABLE TEST_FILME AS SELECT * FROM FILME")
 
 xfail = pytest.mark.xfail
 
@@ -44,7 +44,12 @@ def consultaFilmeGenero():
     sintaxe = "select * from test_filme where genero = 'Drama'"
     cur.execute(sintaxe)
     recset = cur.fetchall()
-    return recset[0][1]
+    return recset[0][2]
+
+
+
+
+
 
 
 #Vamos separar as funções de teste abaixo para um arquivo a parte na próxima sprint -Bruno
@@ -59,7 +64,7 @@ def test_validaCriaFilme():
 
 @xfail
 def test_consultaGenero():
-    assert consultaFilmeGenero() == data['Filme_Invalido']
+    assert consultaFilmeGenero() == data['Genero_Invalido']
 
 def test_filme_genero():
     response = requests.get(url + 'getFilme/Drama')
