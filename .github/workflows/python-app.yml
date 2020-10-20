@@ -29,7 +29,7 @@ jobs:
 
     - name: run docker
       run: |
-        docker-compose up
+        docker-compose up -d
 
     - name: Test with pytest
       run: |
