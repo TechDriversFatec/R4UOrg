@@ -1,13 +1,23 @@
 *** Settings ***
+Documentation     Testes do R4U.
+Library           OperatingSystem
+Library           DatabaseLibrary
 
+*** Set Up ***
+    Connect To Database    dbapiModuleName=psycopg2    dbName=pi    dbUsername=fatec    dbPassword=fatec    dbHost=localhost
+    ...    dbPort=5432
 
 *** Test Cases ***
-testSoma
-    ${productPrice1}    Set Variable    1
-    ${productPrice2}    Set Variable    3
-    ${calculatedTotalPrice}     Evaluate    ${productPrice2}+${productPrice1}
-    ${calculatedTotalPrice}    Convert To String    ${calculatedTotalPrice}    
-    Should Be Equal    ${calculatedTotalPrice}    4
 
-test2
-    Log    Test
+testCriacaoDeRecomendacao
+    ${query}    Execute SQL String    insert into test.Recommendation(id, nome) values (nextval('seq_recommendation'), 'Test')
+    ${query}    Query    SELECT * FROM test.Recommendation WHERE NOME = 'Test'
+    Should Be Equal    ${query[0][1]}    Test
+
+testConsultaFilmeNome
+    ${query}    Query    SELECT * FROM test.FILME WHERE NOME = 'Joker'
+    Should Be Equal    ${query[0][1]}    Joker
+
+testConstultaFilmeGenero
+    ${query}    Query    SELECT * FROM test.FILME WHERE Genero = 'Action'
+    Should Not Be Equal    ${query[0][1]}    Joker
