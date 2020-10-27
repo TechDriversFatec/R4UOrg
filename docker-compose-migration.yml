@@ -7,12 +7,6 @@ services:
     volumes:
         - ./migration:/flyway/sql
 
-  flyway_tests:
-    image: boxfuse/flyway:5-alpine
-    command: -url=jdbc:postgresql://postgres:5432/pi -schemas=test -user=fatec -password=fatec -connectRetries=10 migrate
-    volumes:
-        - ./migration-test:/flyway/sql
-
   postgres:
     image: postgres
     container_name: postgres
