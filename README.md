@@ -19,7 +19,7 @@
   - Cloud AWS - Utilizado para hospedar e disponibilizar a API online para o cliente.
   - Sistemas de versionamento de código - Git e Github para uma melhor integração e organização dos códigos da disciplina.
   - Github Projects - Organização e controle de tasks pelo Scrum Master e PO e acesso claro de prazos e requisitos pelos outros membros da equipe.
-  - Pytest - Biblioteca de testes para Python.
+  - Robot - Biblioteca de testes para Python.
   
 ### Quick Start
 
