@@ -87,12 +87,19 @@
 
 - FlyWay como database automation;
 - Deploy do código backend para a Cloud AWS;
+- Configuração do nginx para uso posterior;
 
 ### Segunda entrega
 
-- Ambiente configurado com Jenkins CI e AWS Code Deploy;
+- Deploy configurado com Jenkins para pipeline e AWS Code Deploy para deploy de código ao servidor;
+- Primeira versão do frontend com layout estático;
+- Mudanças na arquitetura do backend para acomodar o front;
 
 ### Terceira entrega
 
-- Criação e execução de testes automatizados utilizando a biblioteca Pytest
+- Configuração do PyTests no projeto;
+- Criação de testes de integração;
+- Otimizações no backend para melhor performance junto da API do IMDB;
+- Segunda versão do frontend com layout melhorado;
+
 
