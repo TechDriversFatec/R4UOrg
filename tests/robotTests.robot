@@ -2,10 +2,7 @@
 Documentation     Testes do R4U.
 Library           OperatingSystem
 Library           DatabaseLibrary
-
-*** Set Up ***
-    Connect To Database    dbapiModuleName=psycopg2    dbName=pi    dbUsername=fatec    dbPassword=fatec    dbHost=localhost
-    ...    dbPort=5432
+Suite Setup       Connect To Database    dbapiModuleName=psycopg2    dbName=pi    dbUsername=fatec    dbPassword=fatec    dbHost=localhost    dbPort=5432
 
 *** Test Cases ***
 
