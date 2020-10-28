@@ -46,7 +46,7 @@
 - [X] **Sprint 2** - CI
 - [X] **Sprint 3** - Testing
 - [ ] **Sprint 4** - Integração Testing & CI
-- [ ] **Sprint 5** - Load Balancing
+- [ ] **Sprint 5** - Integração Front/Back e Testes no Front
 - [ ] **Sprint 6** - Planejamento pendente
 
 ------------
