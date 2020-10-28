@@ -71,3 +71,5 @@
 - Criação de testes de integração;
 - Otimizações no backend para melhor performance junto da API do IMDB;
 - Segunda versão do frontend com layout melhorado;
+
+...
