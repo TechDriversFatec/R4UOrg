@@ -1,4 +1,4 @@
 #!/bin/sh
 cd /home/ubuntu/
 
-rm -Rf /r4u_application
+rm -Rf r4u_application/
