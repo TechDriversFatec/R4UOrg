@@ -80,6 +80,3 @@
 - Utilização do FlyWay para criação de um schema com dados pré-definidos para ser usado no ambiente de testes;
 - Troca do PyTests por Robot para melhor execução dos testes de integração;
 - Integração dos testes e deploy do ambiente de testes na pipeline Jenkins;
-
-
-test
