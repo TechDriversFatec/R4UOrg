@@ -1,5 +1,3 @@
-# TEST DE PULL REQUIEST
-
 ## Laboratório de Projeto de Banco de Dados
 
 - Introdução do projeto
@@ -9,6 +7,7 @@
 - Objetivos
 
   - O objetivo central do projeto é fazer recomendações inteligentes de filmes baseado no perfil individual de cada usuário.
+  - A disciplina tem como objetivo o estudo do DevOps a partir da implementação das práticas no projeto.
 
 - Tecnologias utilizadas
 
@@ -73,3 +72,11 @@
 - Criação de testes de integração;
 - Otimizações no backend para melhor performance junto da API do IMDB;
 - Segunda versão do frontend com layout melhorado;
+
+### Quarta entrega - Sprint 4 (Integração Testing & CI)
+
+- Alterações no docker-compose em preparo para separação de ambientes;
+- Separação de ambientes em "Test" e "Production", permitindo que o desenvolvedor tenha um ambiente seguro para desenvolver e testar a aplicação sem acidentalmente interferir na aplicação sendo servida;
+- Utilização do FlyWay para criação de um schema com dados pré-definidos para ser usado no ambiente de testes;
+- Troca do PyTests por Robot para melhor execução dos testes de integração;
+- Integração dos testes e deploy do ambiente de testes na pipeline Jenkins;
