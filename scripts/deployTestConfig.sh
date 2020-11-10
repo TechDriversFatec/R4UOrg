@@ -14,4 +14,4 @@ docker-compose -f docker-compose-migration.yml up -d
 
 docker-compose up -d
 
-robot --outputdir /home/ubuntu/robotLogs --nostatusrc robotTests.robot
+robot --outputdir /home/ubuntu/robotLogs --nostatusrc tests/robotTests.robot
