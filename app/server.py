@@ -12,8 +12,7 @@ if (os.environ.get('ENV') != 'prod'):
     os.environ['DATABASE_URL'] = 'postgres://fatec:fatec@postgres:5432/pi'
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "http://localhost:8080"}})
-
+CORS(app)
 app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
