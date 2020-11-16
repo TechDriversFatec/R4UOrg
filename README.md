@@ -47,8 +47,8 @@
 - [X] **Sprint 2** - CI
 - [X] **Sprint 3** - Testing
 - [X] **Sprint 4** - Integração Testing & CI
-- [ ] **Sprint 5** - Deploy do Frontend
-- [ ] **Sprint 6** - Testes Frontend 
+- [ ] **Sprint 5** - Deploy Automático de Frontend
+- [ ] **Sprint 6** - Testes de Frontend 
 
 ------------
 
