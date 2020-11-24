@@ -23,7 +23,7 @@ testConstultaFilmeGenero
 
 testFrontend
     ${frontIP}    Run    hostname -I | awk '{print $1}'
-    Open Browser    http://${frontIP}:8080   Headless Firefox
+    Open Browser    http://${frontIP}:8081   Headless Firefox
     Click Element    xpath=.//html/body/div/div[2]/div/button
     Wait Until Element Is Visible    xpath=.//html/body/div/div[2]/div/p[2]
     ${resultFront}    Get Text    xpath=.//html/body/div/div[2]/div/p[2]
