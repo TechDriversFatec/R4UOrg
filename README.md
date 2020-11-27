@@ -1,20 +1,20 @@
 ## Laboratório de Projeto de Banco de Dados
 
 ### Integrantes:
-
-Scrum Master:
-  Ana Carolina S. de Moura
   
-P.O:
-  Maria Clara Oliveira
+Scrum Master:  
+  [Ana Carolina S. de Moura](https://www.linkedin.com/in/ana-carolina-simplicio-de-moura-84bb49148/)  
+    
+P.O:  
+  [Maria Clara Oliveira](https://www.linkedin.com/in/oliveira-mclaraa/)  
+    
+Dev Team:  
+  [André Pires](https://www.linkedin.com/in/andr%C3%A9-pires-87558919b/)  
+  [Bruno G. D. Faria](https://www.linkedin.com/in/bruno-dionisio-6134451a7/)  
+  [Fernando T. de Castro](https://www.linkedin.com/in/ftcastro/)  
+  [Gilberto Costa Jr.](https://www.linkedin.com/in/gilberto-costa-b8b988161/)  
+  [Wesley Vinicius Silva](https://www.linkedin.com/in/wesley-vinicius-silva-8568a516b/)  
   
-Dev Team:
-  André Pires
-  Bruno G. D. Faria
-  Fernando T. de Castro
-  Gilberto Costa Jr.
-  [Wesley Vinicius Silva](https://www.linkedin.com/in/wesley-vinicius-silva-8568a516b/)
-
 - Introdução do projeto
 
   - Nosso projeto consiste numa API que se utiliza Inteligência Artificial para fazer interações com uma base de dados preexistente (IMDB).
