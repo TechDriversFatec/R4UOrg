@@ -1,6 +1,19 @@
-test
-
 ## Laboratório de Projeto de Banco de Dados
+
+### Integrantes:
+
+Scrum Master:
+  Ana Carolina S. de Moura
+  
+P.O:
+  Maria Clara Oliveira
+  
+Dev Team:
+  André Pires
+  Bruno G. D. Faria
+  Fernando T. de Castro
+  Gilberto Costa Jr.
+  [Wesley Vinicius Silva](https://www.linkedin.com/in/wesley-vinicius-silva-8568a516b/)
 
 - Introdução do projeto
 
