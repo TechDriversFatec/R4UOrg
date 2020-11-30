@@ -62,7 +62,7 @@ Dev Team:
 - [X] **Sprint 2** - CI
 - [X] **Sprint 3** - Testing
 - [X] **Sprint 4** - Integração Testing & CI
-- [ ] **Sprint 5** - Deploy Automático de Frontend
+- [X] **Sprint 5** - Deploy Automático de Frontend
 - [ ] **Sprint 6** - Testes de Frontend 
 
 ------------
@@ -110,4 +110,10 @@ Houveram imprevistos nesta sprint devido a uma exclusão acidental de nossas dua
 - Reconfiguração do CI com a separação de ambientes e os testes de backend;
 - Alteraçes no frontend com a adição do Axios para fazer requests para o backend;
 - Deploy automatizado do frontend utilizando Jenkins e AWS Code Deploy;
+
+### Sexta entrega - Sprint 6 (Testes de Frontend)
+
+- Desenvolvimento do teste de frontend, testando tanto interface quanto conexão com o backend. Testes desenvolvidos com Selenium em conjunto com Robot Framework, o teste navega pela página e realiza o clique para então comparar o resultado dado na tela com os registros do banco de dados;
+- Integração do teste na pipeline de frontend, fazendo com que o deploy seja interrompido caso haja alguma falha com o teste rodado;
+- Adição do step de merge do código na branch master e deploy para máquina produção na pipeline responsável pelo frontend;
 
