@@ -63,7 +63,7 @@ Dev Team:
 - [X] **Sprint 3** - Testing
 - [X] **Sprint 4** - Integração Testing & CI
 - [X] **Sprint 5** - Deploy Automático de Frontend
-- [ ] **Sprint 6** - Testes de Frontend 
+- [X] **Sprint 6** - Testes de Frontend 
 
 ------------
 
