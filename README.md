@@ -65,7 +65,7 @@ Dev Team:
 - [X] **Sprint 5** - Deploy Automático de Frontend
 - [X] **Sprint 6** - Testes de Frontend 
 
-------------
+-------------
 
 
 
