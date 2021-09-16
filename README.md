@@ -117,3 +117,4 @@ Houveram imprevistos nesta sprint devido a uma exclusão acidental de nossas dua
 - Integração do teste na pipeline de frontend, fazendo com que o deploy seja interrompido caso haja alguma falha com o teste rodado;
 - Adição do step de merge do código na branch master e deploy para máquina produção na pipeline responsável pelo frontend;
 
+# R4UOrg
